@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成人导航</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .search-box {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .search-box select,
+    .search-box input[type="text"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .search-box button {
+      padding: 10px;
+      font-size: 16px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .links a {
+      display: block;
+      width: 45%;
+      text-align: center;
+      background: #fff;
+      padding: 10px;
+      margin: 5px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+    }
+    @media (min-width: 600px) {
+      .links a {
+        width: 18%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>成人导航</h1>
+  </header>
+  <div class="container">
+    <!-- 搜索框区域 -->
+    <div class="search-box">
+      <select id="engineSelect">
+        <option value="jable">Jable.tv</option>
+        <option value="missav">MissAV</option>
+        <option value="xvideos">XVideos</option>
+        <option value="pornhub">Pornhub</option>
+        <option value="xnxx">XNXX</option>
+      </select>
+      <input type="text" id="searchQuery" placeholder="请输入搜索内容">
+      <button id="searchBtn">搜索</button>
+    </div>
+    <!-- 常用网站链接 -->
+    <div class="links">
+      <a href="https://jable.tv" target="_blank">Jable.tv</a>
+      <a href="https://missav.ws/cn" target="_blank">MissAV</a>
+      <a href="https://www.xvideos.com" target="_blank">XVideos</a>
+      <a href="https://www.pornhub.com" target="_blank">Pornhub</a>
+      <a href="https://www.xnxx.com" target="_blank">XNXX</a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      var engine = document.getElementById('engineSelect').value;
+      var query = encodeURIComponent(document.getElementById('searchQuery').value);
+      var url = '';
+      if (engine === 'jable') {
+        url = 'https://jable.tv/search/?q=' + query;
+      } else if (engine === 'missav') {
+        url = 'https://missav.ws/search/' + query;
+      } else if (engine === 'xvideos') {
+        url = 'https://www.xvideos.com/?k=' + query;
+      } else if (engine === 'pornhub') {
+        url = 'https://www.pornhub.com/video/search?search=' + query;
+      } else if (engine === 'xnxx') {
+        url = 'https://www.xnxx.com/search/' + query;
+      }
+      // 新窗口打开搜索结果
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
